@@ -1,0 +1,174 @@
+body {
+	background-color: #fbfbff;
+	font-family: 'Roboto', sans-serif;
+}
+
+input[type=text] {
+	border-radius: 3px;
+	border: 1px solid #eee !important;
+	box-shadow: 0;
+	padding: 20px;
+	font-family: 'Roboto', sans-serif;
+}
+#header {
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+#header h1 {
+	font-weight: 400;
+	color: #017575;
+	font-family: 'Oswald', sans-serif;
+}
+
+#footer {
+	margin-top: 40px !important;
+}
+
+#footer p {
+	text-align: center;
+	font-size: 12px;
+	color: lightgrey;
+}
+
+#map_canvas {
+	height: 400px;
+	border: 1px solid #ddd;
+}
+
+#search-field {
+	font-size: 2em;
+	line-height: 2.1em;
+	height: 2.1em;
+}
+
+#search-button {
+	font-size: 2em;
+	line-height: 2.1em;
+	height: 2.1em;
+}
+
+#indicators {
+	
+}
+
+.indicator-row {
+	margin-top: 25px !important;
+}
+
+.indicator {
+	opacity: 0.8;
+	transition: opacity 300ms;
+}
+
+.indicator:hover {
+	cursor: pointer;
+	opacity: 1;
+	transition: opacity 300ms;
+}
+
+.indicator-content {
+	height: 280px;
+	background-color: #ccc;
+	padding: 10px 20px;
+}
+
+.indicator-content h6 {
+	font-weight: 300 !important;
+	font-size: 1.7em;
+	height: 120px;
+	font-family: 'Oswald', sans-serif;
+	color: #fff;
+}
+
+div.mentada-de-madre {
+	background-color: #003030
+}
+
+h6.mentada-de-madre {
+	padding: 15px;
+	text-align: center;
+	font-size: 2.8em;
+	vertical-align: middle;
+	padding: 10px 20px;
+}
+
+.indicator-content p {
+	text-align: center;
+	font-size: 5em;
+	font-family: 'Roboto', sans-serif;
+	font-family: 'Magra', sans-serif;
+	font-weight: 700;
+	color: #003030;
+}
+
+.indicator-content-text p {
+	margin-top: 30px;
+	font-size: 4em !important;
+	vertical-align: bottom;
+}
+div.textillo {
+	font-family: 'Roboto', sans-serif;
+	padding: 100px;
+}
+
+div.textillo h3 {
+	font-family: 'Oswald', sans-serif;
+}
+
+button {
+	background-color: #017575 !important;
+}
+
+.social-icons span.facebook {
+  cursor: pointer;
+  display: inline-block;
+  height: 48px;
+  width: 48px;
+  background-image: url(http://localhost:8000/img/facebook.png);
+  background-repeat: no-repeat;
+  -webkit-transition: background 100ms ease-in;
+  -webkit-transition-delay: 0ms;
+  -moz-transition: background 100ms ease-in 0ms;
+  -o-transition: background 100ms ease-in 0ms;
+  transition: background 100ms ease-in 0ms;
+}
+/* line 45, ../sass/_module.scss */
+.social-icons span.facebook:hover {
+  background-image: url(http://localhost:8000/img/facebook_color.png);
+}
+/* line 67, ../sass/_module.scss */
+.social-icons span.twitter {
+  cursor: pointer;
+  display: inline-block;
+  height: 48px;
+  width: 48px;
+  background-image: url(http://localhost:8000/img/twitter.png);
+  background-repeat: no-repeat;
+  -webkit-transition: background 100ms ease-in;
+  -webkit-transition-delay: 0ms;
+  -moz-transition: background 100ms ease-in 0ms;
+  -o-transition: background 100ms ease-in 0ms;
+  transition: background 100ms ease-in 0ms;
+}
+/* line 58, ../sass/_module.scss */
+.social-icons span.twitter:hover {
+  background-image: url(http://localhost:8000/img/twitter_color.png);
+}
+
+/*
+#003030
+#017575
+#00B3B0
+#91f9fa
+#d5ffff
+
+*/
+
+/*
+1	1a9850
+2	8cce8a
+3	FFCC00
+4	FF6600
+5	d73027
+*/

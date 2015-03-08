@@ -1,0 +1,168 @@
+<html>
+<head>
+  <title>Agua DF</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no">
+  <link rel="stylesheet" href="http://localhost:8000/css/foundation.css" />
+  <link rel="stylesheet" href="http://localhost:8000/css/agua_df.css" />
+  <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.12/themes/css/cartodb.css" />
+  <link href='http://fonts.googleapis.com/css?family=Magra|Oswald:400,300|Roboto' rel='stylesheet' type='text/css'>
+  <script src="http://localhost:8000/js/vendor/modernizr.js"></script>
+  <script src="http://localhost:8000/js/vendor/jquery.js"></script>
+  <script src="http://localhost:8000/js/jquery.number.min.js"></script>
+  <script src="http://localhost:8000/js/jquery.auto-complete.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0-beta.2/angular.min.js"></script>
+  <script src="http://localhost:8000/js/aguas.js"></script>
+  <script src="http://localhost:8000/js/foundation/foundation.js"></script>
+  <script src="http://localhost:8000/js/foundation/foundation.reveal.js"></script>
+  <style type="text/css" media="screen">
+    /* autoComplete styles */
+    .autocomplete-suggestions {
+      text-align: left; cursor: default; border: 1px solid #ccc; border-top: 0; background: #fff; box-shadow: -1px 1px 3px rgba(0,0,0,.1);
+
+      /* core styles should not be changed */
+      position: absolute; display: none; z-index: 9999; max-height: 254px; overflow: hidden; overflow-y: auto; box-sizing: border-box;
+    }
+    .autocomplete-suggestion { position: relative; padding: 0 .6em; line-height: 23px; white-space: nowrap; overflow: hidden; font-size: 1.02em; color: #333; }
+    .autocomplete-suggestion b { font-weight: normal; color: #1f8dd6; }
+    .autocomplete-suggestion.selected { background: #f0f0f0; }
+  </style>
+</head>
+<body ng-app="aguas" ng-controller="AguasController" ng-init="initMap()">
+
+  <div class="row" id="header">
+    <div class="small-8 columns">
+      <img src="http://localhost:8000/img/aguas-logo1-350px.png" alt="">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-12 columns">
+
+      <!-- campo de busqueda -->
+      <div class="row collapse">
+        <div class="small-10 columns">
+          <input type="text" id="search-field" ng-model="searchField" placeholder="Introduce tu Colonia o Codigo Postal">
+        </div>
+        <div class="small-2 columns">
+          <button id="search-button" class="button postfix" ng-click="search()">Buscar</button>
+        </div>
+      </div>
+
+      <!-- Mapa -->
+      <div id="map_canvas">
+
+      </div>
+
+    </div>
+  </div>
+
+  <div class="row" id="indicators">
+    <div class="small-12 columns">
+
+      <div class="row indicator-row">
+
+        <div class="small-4 columns indicator" ng-click="showModal('adecuacionSanitariaModal')">
+          <div class="indicator-content" ng-style="adecuacionSanitariaStyle">
+            <h6>Acceso a drenaje y Agua potable</h6>
+            <p ng-bind="adecuacionSanitaria"></p>
+          </div>
+        </div>
+        <div id="adecuacionSanitariaModal" class="reveal-modal textillo" data-reveal>
+          <h3>¿Por qué te hace daño?</h3>
+          <p>La falta de acceso de agua entubada y drenaje tienen varios posibles focos de infección: mala calidad del agua de la fuente de origen, contaminación en almacenamiento o contaminación por exposición a materia fecal. Un estudio del Banco Mundial reveló que la instalación de agua entubada y drenajes reduce en 40% el número de casos de diarrea. </p>
+          <h3>¿Qué puedo hacer para reducir el riesgo de enfermarme?</h3>
+          <p>Es importante que si careces de agua entubada y drenaje mantengas limpios y tapados los contenedores de almacenamiento de agua. Además, intenta de tener algún tipo de baño seco o fosa séptica adecuadamente aislados y tratados para depositar tus dehechos y evitar la contaminación de materia fecal. Lava muy bien tus alimentos. Manten una limpieza profunda de cocina y baño. Asegurate todos los alimentos y utencilios de cocina en un lugar cerrado y de consumir agua embotellada o desinfectada.Además, intenta de consumir agua filtrada o embotellada; en caso de que no tuvieras acceso a ellas, hierve el agua por 3 minutos y cubrela inmediatamente con un material limpio. Alternativamente usa 1/8 de cucharada de cloro por cada galón de agua, revuelva bien y deje reposar por 30 min. </p>
+          <a class="close-reveal-modal">&#215;</a>
+        </div>
+
+        <div class="small-4 columns indicator" ng-click="showModal('reporteFaltaAguaModal')">
+          <div class="indicator-content indicator-content-text" ng-style="reporteFaltaAguaStyle">
+            <h6>Reportes Escasez de Agua</h6>
+            <p ng-bind="reporteFaltaAgua"></p>
+          </div>
+        </div>
+        <div id="reporteFaltaAguaModal" class="reveal-modal textillo" data-reveal>
+          <h3>¿Por qué te hace daño?</h3>
+          <p>La escasez de agua forza a que la obtengas fuentes que pueden estar expuestas a contaminantes o que en el proceso de almacenamiento se contamine. Un estudio del Banco Mundial reveló que mejoras al suministro de agua reducen en un 20% el número de casos de diarrea.</p>
+          <h3>¿Qué puedo hacer para reducir el riesgo de enfermarme?</h3>
+          <p>Es importante que si careces de agua entubada y drenaje mantengas limpios y tapados los contenedores de almacenamiento de agua. Si tienes una cisterna o tinaco, es importante que la laves periódicamente y las mantengas cerradas, alejadas de contaminantes. Asegurate todos los alimentos y utencilios de cocina en un lugar cerrado y de consumir agua embotellada o desinfectada.Además, intenta de consumir agua filtrada o embotellada; en caso de que no tuvieras acceso a ellas, hierve el agua por 3 minutos y cubrela inmediatamente con un material limpio. Alternativamente usa 1/8 de cucharada de cloro por cada galón de agua, revuelva bien y deje reposar por 30 min. </p>
+          <a class="close-reveal-modal">&#215;</a>
+        </div>
+
+        <div class="small-4 columns indicator" ng-click="showModal('reportesRetioModal')">
+          <div class="indicator-content indicator-content-text" ng-style="reportesRetioStyle">
+            <h6>Reportes Inundaciones</h6>
+            <p ng-bind="reportesRetio"></p>
+          </div>
+        </div>
+        <div id="reportesRetioModal" class="reveal-modal textillo" data-reveal>
+          <h3>¿Por qué te hace daño?</h3>
+          <p>Las inundaciones en zonas urbanas se deben principalmente a la obstrucción de drenajes por basura en la calle, lo cual te expone a aguas negras y a material fecal a través del agua y el aire. Un estudio  publicado en The Lancet reveló que mejoras para prevenir exposición a aguas negras durante inundaciones reducía en 25% el número de casos de diarrea.</p>
+          <h3>¿Qué puedo hacer para reducir el riesgo de enfermarme?</h3>
+          <p>Si el agua entró a tu casa y estuvo en contacto con alimentos, artículos de higiene personal , colchones, medicamentos, peluches o almohadas, es importante que los desheches pues son un foco de riesgo de infecciones. Adicionalmente es importante que des una limpieza completa a superficies lisas con desinfectantes, en particular a tu baño y cocina. Asegurate todos los alimentos y utencilios de cocina en un lugar cerrado y de consumir agua embotellada o desinfectada.</p>
+          <a class="close-reveal-modal">&#215;</a>
+        </div>
+
+      </div>
+
+      <div class="row indicator-row">
+
+        <div class="small-4 columns indicator" ng-click="showModal('aguaResidualModal')">
+          <div class="indicator-content" ng-style="aguaResidualStyle">
+            <h6>Drenajes expuestos</h6>
+            <p ng-bind="aguaResidual"></p>
+          </div>
+        </div>
+        <div id="aguaResidualModal" class="reveal-modal textillo" data-reveal>
+          <h3>¿Por qué te hace daño?</h3>
+          <p>Los drenajes expuestos liberan materia fecal al aire lo cual puede contaminar el agua que bebes o tu comida. Un estudio del Banco Mundial encontró que mejoras a la infraestructura de drenaje en comunidades con drenajes expuestos reducía en 36% el número de casos de diarrea.</p>
+          <h3>¿Qué puedo hacer para reducir el riesgo de enfermarme?</h3>
+          <p>Asegurate que los contenedores de almacenamiento del agua que usas para beber y lavar tus alimentos estén tapados. Antes de consumir frutas o verduras asegurate de lavarlas e intenta mantener cubiertos todos los alimentos que consumas. Mantén un régimen de limpieza riguroso de cocina y baño. Además, intenta de consumir agua filtrada o embotellada; en caso de que no tuvieras acceso a ellas, hierve el agua por 3 minutos y cubrela inmediatamente con un material limpio. Alternativamente usa 1/8 de cucharada de cloro por cada galón de agua, revuelva bien y deje reposar por 30 min. </p>
+          <a class="close-reveal-modal">&#215;</a>
+        </div>
+
+        <div class="small-4 columns indicator" ng-click="showModal('basurerosModal')">
+          <div class="indicator-content" ng-style="basurerosStyle">
+            <h6>Basureros clandestinos</h6>
+            <p ng-bind="basureros"></p>
+          </div>
+        </div>
+        <div id="basurerosModal" class="reveal-modal textillo" data-reveal>
+          <h3>¿Por qué te hace daño?</h3>
+          <p>Los vertederos clandestinos son un foco de transmisión de bacterias y otras infecciones que pueden afectar los depositos de agua que bebes o exponerte a contaminantes al contacto o en el aire. Un estudio del Banco Mundial encontró que mejoras a la higiene en comunidades con  condiciones sanitarias inadecuadas reducía en 33% el número de casos de diarrea.</p>
+          <h3>¿Qué puedo hacer para reducir el riesgo de enfermarme?</h3>
+          <p>Intenta aumentar la limpieza de tu hogar, en particular de tu cocina y baño. Lavate las manos frecuentemente. Antes de consumir frutas o verduras asegurate de lavarlas e intenta mantener cubiertos todos los alimentos que consumas. Manten tus ventanas y puertas cerradas para evitar infestaciones de plagas. Además, intenta de consumir agua filtrada o embotellada; en caso de que no tuvieras acceso a ellas, hierve el agua por 3 minutos y cubrela inmediatamente con un material limpio. Alternativamente usa 1/8 de cucharada de cloro por cada galón de agua, revuelva bien y deje reposar por 30 min.</p>
+          <a class="close-reveal-modal">&#215;</a>
+        </div>
+
+        <div class="small-4 columns indicator" ng-click="showModal('mejoraColoniaModal')">
+          <div class="indicator-content mentada-de-madre">
+            <h6 class="mentada-de-madre">Mejora tu colonia</h6>
+            <div class="social-icons" style="text-align: center; padding-top: 30px;">
+              <a target="blank" href="{{twitterLink}}" title="Compartir en Twitter">
+                <span class="twitter"></span>
+              </a>
+              &nbsp;&nbsp;&nbsp;
+              <a target="blank" href="{{facebookLink}}" title="Compartir en Facebook">
+                <span class="facebook"></span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <div class="row" id="footer">
+    <div class="small-12 columns">
+      <p>Frijoles Charros &copy; 2015</p>
+    </div>
+  </div>
+
+  <script src="http://libs.cartocdn.com/cartodb.js/v3/3.12/cartodb.js"></script>
+
+</body>
+</html>
