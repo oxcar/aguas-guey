@@ -1,0 +1,24 @@
+
+# guion
+
+-Nuestro proyecto quiere entender las condiciones de calidad y falta de abasto del agua en la Ciudad de México y cómo nos afecta.
+
+Para lograr este objetivo construímos un proyecto que trata el tema del agua a un nivel personal  por dos mecanismos: mediante una interacción en la vida real con el espacio y mediante una aplicación web que te explica cuáles son los problemas de auga en tu colonia, cómo te afectan, cómo puedes prevenir enfermarte y cómo puedes tomar acción para mejorar las condiciones en tu colonia.
+
+El primer elemento, la interacción en vida real con un espacio físico consiste en visibilizar el problema del agua en el Distrito Federal por medio de una instalación  sensorial. 
+
+¿Cómo funciona esta instalación sensorial?
+
+Vamos a pintar o pegar sobre el piso de un espacio grande un mapa de la ciudad a nivel de manzanas que tenga una capa de información de nivel de desarrollo social. Sobre el mismo se colocarán distintos tipos de contenedores de agua cuyo tamaño y densidad representarían consumo de agua de la población. También se colocarán banners con otra capa de información y cajas negras que representarán el índice de enfermedades relacionados con el agua.
+
+El segundo elemento es una web app que funciona en conjunto con el mapa físico o por separado. Está diseñado para operarse en cuálquier computadora, tablet o celular de manera intuitiva para que cualquier persona, sin importar su edad o experiencia, pueda usarlo.
+
+¿Cómo fuunciona la web app?
+
+¡Aguas Güey! es el primer sitio en México diseñado y para entender de manera fácil las condiciones del agua en tu colonia y cómo afecta a tu salud. Nos enfocamos en que la web app se enfoque en tu colonia porque lo hace mucho más personal e íntimo, motivándote 90+¡_., El nombre viene de un juego de palabras de dicho popular que significa "¡Cuidado Amigo!".
+
+El sitio incluye cinco indicadores que no se habían incluido antes en ninguna otra plataforma de visualización y que permiten entender algunos de los principales problemas que se enfrentan en la ciudad en torno al agua.
+
+
+- primera app que trata de manera profunda el tema del agua en la Ciudad de México
+- nos enfocamos en hacer interesante el tema del agua para que cualquier persona se sienta conectado
