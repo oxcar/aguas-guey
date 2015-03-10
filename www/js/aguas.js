@@ -200,7 +200,7 @@ $scope.translateRankingStyle = function(ranking, imagen) {
             } else if (5 == ranking && "drenaje" == imagen) {
                 style = {
                     "background-color": "#cf1920",
-                    "background-image": "url(http://localhost:8000/img/drenaje-5.png)",
+                    "background-image": "url(http://localhost:8000/img/desague-5.png)",
                     "background-repeat": "no-repeat",
                     "background-position": "50% 50%"
                 };
@@ -340,7 +340,7 @@ $scope.translateRankingStyle = function(ranking, imagen) {
             } else if (1 == ranking && "drenaje" == imagen) {
                 style = {
                     "background-color": "#2fae3d",
-                    "background-image": "url(http://localhost:8000/img/drenaje-1.png)",
+                    "background-image": "url(http://localhost:8000/img/desague-1.png)",
                     "background-repeat": "no-repeat",
                     "background-position": "50% 50%"
                 };
@@ -375,7 +375,7 @@ $scope.translateRankingStyle = function(ranking, imagen) {
             } else if (0 == ranking && "drenaje" == imagen) {
                 style = {
                     "background-color": "#ccc",
-                    "background-image": "url(http://localhost:8000/img/drenaje-gris.png)",
+                    "background-image": "url(http://localhost:8000/img/desague-gris.png)",
                     "background-repeat": "no-repeat",
                     "background-position": "50% 50%"
                 };

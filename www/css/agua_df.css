@@ -1,5 +1,5 @@
 body {
-	background-color: #fbfbff;
+	background-color: #fff;
 	font-family: 'Roboto', sans-serif;
 }
 
@@ -69,7 +69,7 @@ input[type=text] {
 
 .indicator-content {
 	height: 280px;
-	background-color: #ccc;
+	background-color: #ddd;
 	padding: 10px 20px;
 }
 
@@ -109,7 +109,7 @@ h6.mentada-de-madre {
 }
 div.textillo {
 	font-family: 'Roboto', sans-serif;
-	padding: 100px;
+	padding: 50px 100px;
 }
 
 div.textillo h3 {
@@ -125,7 +125,7 @@ button {
   display: inline-block;
   height: 48px;
   width: 48px;
-  background-image: url(http://localhost:8000/img/facebook.png);
+  background-image: url(http://localhost:8000/img/facebook_color.png);
   background-repeat: no-repeat;
   -webkit-transition: background 100ms ease-in;
   -webkit-transition-delay: 0ms;
@@ -143,7 +143,7 @@ button {
   display: inline-block;
   height: 48px;
   width: 48px;
-  background-image: url(http://localhost:8000/img/twitter.png);
+  background-image: url(http://localhost:8000/img/twitter_color.png);
   background-repeat: no-repeat;
   -webkit-transition: background 100ms ease-in;
   -webkit-transition-delay: 0ms;
